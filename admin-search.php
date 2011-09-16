@@ -10,7 +10,7 @@ TODO:
 	* Better looks, probably move as part of the menu
 	* Add icons (tricky, because the information is in CSS only)
 	* More liberal search for multiple words: "media new", "new media"
-	* TextMate style first-word-letter-search : nm matches "new media", "media new", 
+	* TextMate style first-word-letter-search : nm matches "new media", "media new",
 	* Safer removal of count bubbles, see the comment in remove_spans()
 	* Add jQuery UI Autocomplete to core
 	* Further away: search for text inside settings pages
