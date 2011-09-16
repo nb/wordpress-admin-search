@@ -18,8 +18,16 @@ TODO:
 
 class WP_Admin_Search {
 
+	var $version = '0.1';
+	var $in_dev = false;
+
 	function __construct() {
+		$this->in_dev = defined( 'WP_DEBUG' ) && WP_DEBUG;
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+
+	function asset_version() {
+		return $this->in_dev? mt_rand() : $this->version;
 	}
 
 	function remove_spans( $text ) {
@@ -48,21 +56,24 @@ class WP_Admin_Search {
 			// remove count bubbles, which are in spans
 			$menu_item['name'] = $this->remove_spans( $menu_item['name'] );
 			$menu_item['parent_name'] = $this->remove_spans( $menu_item['parent_name'] );
-			
+
 			$menu_item['label'] = '<span class="name">'.$menu_item['name'].'</span>';
 			if ( $menu_item['parent_name'] ) {
 				$menu_item['label'] = '<span class="parent">'.$menu_item['parent_name'].'</span> &rarr; '.$menu_item['label'];
-			} 
+			}
 		}
 		return $menu_items;
 	}
 
 	function admin_init() {
 		$this->menu_items = $this->build_menu_items();
-		wp_enqueue_script( 'jquery-ui-autocomplete', plugins_url( basename( dirname( __FILE__ ) ) ) . '/ui.autocomplete.js', array('jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position'), '1.8.2' );
-		wp_enqueue_script( 'admin-search', plugins_url( basename( dirname( __FILE__ ) ) ) . '/admin-search.js', array('jquery-hotkeys', 'jquery-ui-autocomplete'), mt_rand() );
+		wp_enqueue_script( 'jquery-ui-autocomplete', plugins_url( basename( dirname( __FILE__ ) ) ) . '/ui.autocomplete.js',
+			array('jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position'), '1.8.2' );
+		wp_enqueue_script( 'admin-search', plugins_url( basename( dirname( __FILE__ ) ) ) . '/admin-search.js',
+			array('jquery-hotkeys', 'jquery-ui-autocomplete'), $this->asset_version() );
 		wp_localize_script( 'admin-search', 'adminMenuItems', $this->menu_items);
-		wp_enqueue_style( 'admin-search', plugins_url( basename( dirname( __FILE__ ) ) ) . '/admin-search.css', array(), mt_rand() );
+		wp_enqueue_style( 'admin-search', plugins_url( basename( dirname( __FILE__ ) ) ) . '/admin-search.css',
+			array(), $this->asset_version() );
 	}
 }
 
