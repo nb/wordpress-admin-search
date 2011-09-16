@@ -1,0 +1,28 @@
+#admin-search {
+	margin-left: 40px;
+	width: 150px;
+}
+ul.ui-autocomplete {
+	min-width: 200px;
+	background-color: white;
+	border: 1px solid rgba(200, 200, 200, 0.5);
+	padding-top: 4px;
+	border-top: 4px;
+	position: absolute;
+}
+ul.ui-autocomplete li a {
+	color: #21759B;
+	line-height: 18px;
+	font-size: 12px;
+	padding-left: 12px;
+	display: block;
+	padding: 2px 5px;
+	text-decoration: none;
+}
+ul.ui-autocomplete li a.ui-state-hover {
+	background-color: #EAF2FA !important;
+	color: #333 !important;
+}
+ul.ui-autocomplete .name {
+	font-weight: bold;
+}
