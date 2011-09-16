@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Admin Search
-Plugin Description: / opens a search bar, where you find your wp-admin page, instead of clicking on the menu
+Description: Quick launcher for WordPress admin pages, just press /
 Plugin Version: 0.1
-Plugin Author: Nikolay Bachiyski
-Plugin Author URL: http://nikolay.bg/
+Author: Nikolay Bachiyski
+Author URI: http://nikolay.bg/
 
 TODO:
 	* Better looks, probably move as part of the menu
