@@ -67,8 +67,8 @@ class WP_Admin_Search {
 
 	function admin_init() {
 		$this->menu_items = $this->build_menu_items();
-		wp_enqueue_script( 'jquery-ui-autocomplete', plugins_url( basename( dirname( __FILE__ ) ) ) . '/ui.autocomplete.js',
-			array('jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-position'), '1.8.2' );
+		wp_enqueue_script( 'jquery-ui-autocomplete-html', plugins_url( basename( dirname( __FILE__ ) ) ) . '/jquery.ui.autocomplete.html.js',
+			array('jquery-ui-autocomplete'), $this->asset_version() );
 		wp_enqueue_script( 'admin-search', plugins_url( basename( dirname( __FILE__ ) ) ) . '/admin-search.js',
 			array('jquery-hotkeys', 'jquery-ui-autocomplete'), $this->asset_version() );
 		wp_localize_script( 'admin-search', 'adminMenuItems', $this->menu_items);
