@@ -7,7 +7,7 @@ var adminSearch = function($, adminMenuItems) {
 	}
 	
 	this.addSearchBox = function() {
-		$('h1').append('<input id="admin-search" type="search" placeholder="Search admin…"></input>');
+		$('ul#adminmenu').after('<div class="menu-top"><input id="admin-search" type="search" placeholder="Search wp-admin…"></input></div>');
 	}
 	
 	this.installShortcut = function(shortcut) {
@@ -23,7 +23,8 @@ var adminSearch = function($, adminMenuItems) {
 				window.location.href = ui.item.url;
 				return false;
 			},
-			source: adminMenuItems
+			source: adminMenuItems,
+			html: true
 		});
 	}
 }
